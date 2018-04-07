@@ -79,7 +79,7 @@ module gear (
 	t  = mm_per_tooth/2-backlash/2;                //tooth thickness at pitch circle
 	k  = -iang(b, p) - t/2/p/PI*180;             //angle to where involute meets base circle on each side of tooth
     difference() {
-        for (i = [0:number_of_teeth-teeth_to_hide-1] )
+        for (i = [0:(number_of_teeth-teeth_to_hide-1 > 0 ? 1 : -1):number_of_teeth-teeth_to_hide-1] )
             rotate([0,0,i*360/number_of_teeth])
                 linear_extrude(height = thickness, center = center, convexity = 10, twist = twist)
                     polygon(
