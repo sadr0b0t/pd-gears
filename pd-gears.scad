@@ -69,7 +69,8 @@ module gear (
 	pressure_angle  = 28,   //Controls how straight or bulged the tooth sides are. In degrees.
 	clearance       = 0.0,  //gap between top of a tooth on one gear and bottom of valley on a meshing gear (in millimeters)
 	backlash        = 0.0,   //gap between two meshing teeth, in the direction along the circumference of the pitch circle
-    $fn = 20 // number of fragments to draw hole cylinder
+    center = false,   // center gear by z axis
+    $fn = 20   // number of fragments to draw hole cylinder
 ) {
 	p  = mm_per_tooth * number_of_teeth / PI / 2;  //radius of pitch circle
 	c  = p + mm_per_tooth / PI - clearance;        //radius of outer circle
@@ -80,7 +81,7 @@ module gear (
     difference() {
         for (i = [0:number_of_teeth-teeth_to_hide-1] )
             rotate([0,0,i*360/number_of_teeth])
-                linear_extrude(height = thickness, center = true, convexity = 10, twist = twist)
+                linear_extrude(height = thickness, center = center, convexity = 10, twist = twist)
                     polygon(
                         points=[
                             [0, -hole_diameter/10],
@@ -93,7 +94,8 @@ module gear (
                         ],
                         paths=[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]]
                     );
-        cylinder(h=2*thickness+1, r=hole_diameter/2, center=true, $fn=$fn);
+        translate([0,0, (center ? 0 : -0.1)])
+            cylinder(h=thickness+0.2, r=hole_diameter/2, center=center, $fn=$fn);
     }
 };	
 //these 4 functions are used by gear
@@ -110,13 +112,14 @@ module rack (
 	thickness       = 6,    //thickness of rack in mm (affects each tooth)
 	height          = 120,   //height of rack in mm, from tooth top to far side of rack.
 	pressure_angle  = 28,   //Controls how straight or bulged the tooth sides are. In degrees.
-	backlash        = 0.0   //gap between two meshing teeth, in the direction along the circumference of the pitch circle
+	backlash        = 0.0,   //gap between two meshing teeth, in the direction along the circumference of the pitch circle
+    center = false,   // center rack by z axis
 ) {
 	a = mm_per_tooth / PI; //addendum
 	t = a*cos(pressure_angle)-1;         //tooth side is tilted so top/bottom corners move this amount
 		for (i = [0:number_of_teeth-1] )
 			translate([i*mm_per_tooth,0,0])
-				linear_extrude(height = thickness, center = true, convexity = 10)
+				linear_extrude(height = thickness, center = center, convexity = 10)
 					polygon(
 						points=[
 							[-mm_per_tooth * 3/4,                 a-height],
