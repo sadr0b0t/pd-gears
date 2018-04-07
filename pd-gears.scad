@@ -68,7 +68,8 @@ module gear (
 	teeth_to_hide   = 0,    //number of teeth to delete to make this only a fraction of a circle
 	pressure_angle  = 28,   //Controls how straight or bulged the tooth sides are. In degrees.
 	clearance       = 0.0,  //gap between top of a tooth on one gear and bottom of valley on a meshing gear (in millimeters)
-	backlash        = 0.0   //gap between two meshing teeth, in the direction along the circumference of the pitch circle
+	backlash        = 0.0,   //gap between two meshing teeth, in the direction along the circumference of the pitch circle
+    $fn = 20 // number of fragments to draw hole cylinder
 ) {
 	p  = mm_per_tooth * number_of_teeth / PI / 2;  //radius of pitch circle
 	c  = p + mm_per_tooth / PI - clearance;        //radius of outer circle
@@ -92,7 +93,7 @@ module gear (
                         ],
                         paths=[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]]
                     );
-        cylinder(h=2*thickness+1, r=hole_diameter/2, center=true);
+        cylinder(h=2*thickness+1, r=hole_diameter/2, center=true, $fn=$fn);
     }
 };	
 //these 4 functions are used by gear
