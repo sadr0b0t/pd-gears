@@ -92,7 +92,7 @@ module gear (
                         ],
                         paths=[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]]
                     );
-        cylinder(h=2*thickness+1, r=hole_diameter/2, center=true, $fn=20);
+        cylinder(h=2*thickness+1, r=hole_diameter/2, center=true);
     }
 };	
 //these 4 functions are used by gear
