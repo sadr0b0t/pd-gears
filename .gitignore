@@ -1,0 +1,9 @@
+# gedit backups
+*~
+
+# Node.js modules
+node_modules
+
+# npm pack
+*.tgz
+

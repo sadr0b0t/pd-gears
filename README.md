@@ -7,10 +7,12 @@ and major API fixes and improvements.
 Version 1.1 is total copy of publicDomainGearV1.1.scad from thingiverse project,
 modifications start from 2.x.
 
-Major changes in 2.x:
+Changes in 2.x:
 - add 'center' [true/false] param to gear and rack modules to decide if gear or rack should be centered by z axis, don't center by default
 - add $fn param to gear module to control number of fragments when render hole cylinder, $fn=20 by default
+- packaged for Openscad-Modules https://github.com/RobertFach/Openscad-Modules
 + minor internal code fixes and improvements
+
 
 Description from Leemon Baird original project:
 

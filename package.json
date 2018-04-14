@@ -1,0 +1,22 @@
+{
+  "name": "pd-gears",
+  "version": "2.0.0",
+  "description": "OpenSCAD involute parametrized gear generator",
+  "main": "pd-gears.scad",
+  "files": [
+    "pd-gears.scad",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sadr0b0t/pd-gears.git"
+  },
+  "keywords": ["openSCAD","gears"],
+  "author": "Leemon Baird, packaged by sadr0b0t",
+  "license": "Public domain",
+  "bugs": {
+    "url": "https://github.com/sadr0b0t/pd-gears/issues"
+  },
+  "homepage": "https://github.com/sadr0b0t/pd-gears"
+}
+
