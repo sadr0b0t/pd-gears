@@ -140,7 +140,7 @@ module rack (
 //their centers separated by the sum of their pictch_radius.
 function circular_pitch  (mm_per_tooth=3) = mm_per_tooth;                     //tooth density expressed as "circular pitch" in millimeters
 function diametral_pitch (mm_per_tooth=3) = PI / mm_per_tooth;         //tooth density expressed as "diametral pitch" in teeth per millimeter
-function module_value    (mm_per_tooth=3) = mm_per_tooth / pi;                //tooth density expressed as "module" or "modulus" in millimeters
+function module_value    (mm_per_tooth=3) = mm_per_tooth / PI;                //tooth density expressed as "module" or "modulus" in millimeters
 function pitch_radius    (mm_per_tooth=3,number_of_teeth=11) = mm_per_tooth * number_of_teeth / PI / 2;
 function outer_radius    (mm_per_tooth=3,number_of_teeth=11,clearance=0.1)    //The gear fits entirely within a cylinder of this radius.
 	= mm_per_tooth*(1+number_of_teeth/2)/PI  - clearance;              
