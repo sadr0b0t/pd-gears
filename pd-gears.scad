@@ -116,7 +116,7 @@ module rack (
     center = false,   // center rack by z axis
 ) {
 	a = mm_per_tooth / PI; //addendum
-	t = a*cos(pressure_angle)-1;         //tooth side is tilted so top/bottom corners move this amount
+	t = a*cos(pressure_angle)-mm_per_tooth/10;         //tooth side is tilted so top/bottom corners move this amount
 		for (i = [0:number_of_teeth-1] )
 			translate([i*mm_per_tooth,0,0])
 				linear_extrude(height = thickness, center = center, convexity = 10)
