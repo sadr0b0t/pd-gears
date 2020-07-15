@@ -117,9 +117,9 @@ module rack (
 ) {
 	a = mm_per_tooth / PI; //addendum
 	t = a*cos(pressure_angle)-mm_per_tooth/10;         //tooth side is tilted so top/bottom corners move this amount
+	linear_extrude(height = thickness, center = center, convexity = 10)
 		for (i = [0:number_of_teeth-1] )
 			translate([i*mm_per_tooth,0,0])
-				linear_extrude(height = thickness, center = center, convexity = 10)
 					polygon(
 						points=[
 							[-mm_per_tooth * 3/4,                 a-height],
